@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 249, 250, 251;
+  --background-end-rgb: 243, 244, 246;
+  --accent-color: 124, 58, 237; /* Default purple-600 */
+  animation: colorCycle 15s infinite;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .neomorphic-outer {
+    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    background: #f0f0f0;
+    border-radius: 16px;
+  }
+
+  .neomorphic-inner {
+    box-shadow: inset 5px 5px 10px #d9d9d9, inset -5px -5px 10px #ffffff;
+    background: #f0f0f0;
+    border-radius: 16px;
+  }
+
+  .neomorphic-button {
+    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+    background: #f0f0f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .neomorphic-button:active {
+    box-shadow: inset 5px 5px 10px #d9d9d9, inset -5px -5px 10px #ffffff;
+  }
+}
+
+@keyframes colorCycle {
+  0%,
+  100% {
+    --accent-color: 124, 58, 237; /* purple-600 */
+  }
+  20% {
+    --accent-color: 37, 99, 235; /* blue-600 */
+  }
+  40% {
+    --accent-color: 16, 185, 129; /* emerald-600 */
+  }
+  60% {
+    --accent-color: 245, 158, 11; /* amber-600 */
+  }
+  80% {
+    --accent-color: 220, 38, 38; /* red-600 */
+  }
+}
+
+.accent-text {
+  color: rgb(var(--accent-color));
+  transition: color 0.5s ease;
+}
+
+.accent-bg {
+  background-color: rgb(var(--accent-color));
+  transition: background-color 0.5s ease;
+}
+
+.accent-border {
+  border-color: rgb(var(--accent-color));
+  transition: border-color 0.5s ease;
+}
+
+/* Override all purple-600 colors with the accent color */
+.text-purple-600 {
+  color: rgb(var(--accent-color)) !important;
+}
+
+.bg-purple-600 {
+  background-color: rgb(var(--accent-color)) !important;
+}
+
+.border-purple-600 {
+  border-color: rgb(var(--accent-color)) !important;
+}
+
+.hover\:bg-purple-700:hover {
+  background-color: rgba(var(--accent-color), 0.9) !important;
+}
+
+.hover\:text-purple-700:hover {
+  color: rgba(var(--accent-color), 0.9) !important;
+}
